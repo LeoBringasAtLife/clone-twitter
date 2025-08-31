@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Perfil de Leo Bringas - Desarrollador Web">
+    <title>LeoBringasAtLife – Proyectos Web</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24..48,100..700,0..1,-50..200');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .fake-alert a:hover {
+            text-decoration: underline;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000000;
+            color: #e7e9ea;
+            line-height: 1.5;
+        }
+
+        .profile-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding-bottom: 2rem;
+        }
+
+        /* Navegación */
+        .profile-nav {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(12px);
+            z-index: 10;
+            border-bottom: 1px solid #2f3336;
+        }
+
+        .profile-nav-title h1 {
+            font-weight: 600;
+        }
+
+        .profile-nav-title p {
+            font-size: 0.85rem;
+            color: #71767b;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 200,
+                'GRAD' 0,
+                'opsz' 24;
+
+            font-size: 22px;
+            vertical-align: middle;
+            color: #e7e9ea;
+            user-select: none;
+            line-height: 1;
+        }
+
+        /* Portada */
+        .profile-cover {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Header de perfil */
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            margin-top: 0;
+            position: relative;
+        }
+
+        .profile-avatar {
+            position: relative;
+        }
+
+        .profile-avatar img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-top: 1rem;
+        }
+
+        .profile-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn-more,
+        .btn-follow {
+            border: none;
+            border-radius: 9999px;
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .btn-more {
+            background: transparent;
+            color: #e7e9ea;
+            width: 36px;
+            height: 36px;
+            padding: 0;
+            border: 1px solid #2f3336;
+        }
+
+        .btn-more:hover {
+            background: rgba(231, 233, 234, 0.1);
+        }
+
+        .btn-follow {
+            background: #eff3f4;
+            color: #0f1419;
+            min-width: 90px;
+        }
+
+        .btn-follow:hover {
+            background: #d7dbdc;
+        }
+
+        .btn-follow.following {
+            background: transparent;
+            color: #FFFFFF;
+            /* blanco correcto */
+            border: 1px solid #2f3336;
+        }
+
+        /* Información del perfil */
+        .profile-info {
+            padding: 1rem 1.5rem 0;
+        }
+
+        .profile-info h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+
+        .username {
+            color: #777777;
+            margin-bottom: 1rem;
+        }
+
+        .bio {
+            margin: 1rem 0;
+            font-size: 0.95rem;
+        }
+
+        .profile-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+            color: #bebebe;
+            font-size: 0.9rem;
+        }
+
+        .detail {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .detail a {
+            color: #b4b4b4;
+            text-decoration: none;
+        }
+
+        .detail a:hover {
+            text-decoration: underline;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            text-decoration: none;
+            color: #c9c9c9;
+            transition: all 0.2s ease;
+        }
+
+        .stat:hover {
+            color: rgb(70, 150, 200);
+        }
+
+        .stat strong {
+            font-weight: 700;
+        }
+
+        /* Pestañas */
+        .profile-tabs {
+            display: flex;
+            border-bottom: 1px solid #2f3336;
+            margin-top: 1rem;
+        }
+
+        .profile-tabs a {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            text-decoration: none;
+            color: #71767b;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .profile-tabs a:hover {
+            background: rgba(231, 233, 234, 0.05);
+            color: #e7e9ea;
+        }
+
+        .profile-tabs a.active {
+            color: #e7e9ea;
+            font-weight: 600;
+        }
+
+        .profile-tabs a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 4px;
+            background: #b4b4b4;
+            border-radius: 2px;
+        }
+
+        /* Sección de proyectos */
+        .projects-section,
+        .interests-section {
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .projects-section h2,
+        .interests-section h2 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: #16181c;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+            border: 1px solid #2f3336;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-color: #b4b4b4;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .project-info {
+            padding: 1rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .project-info p {
+            color: #71767b;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tags span {
+            background: rgba(29, 155, 240, 0.1);
+            color: #b4b4b4;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 500;
+        }
+
+        /* Botones proyectos */
+        .project-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            justify-content: left;
+        }
+
+        .btn-project {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.15);
+            color: #FFFFFF;
+            padding: 0.4rem 0.8rem;
+            min-width: 5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            height: 2rem;
+        }
+
+        .btn-text,
+        .btn-icon {
+            position: absolute;
+            transition: transform .2s ease, opacity .2s ease;
+        }
+
+        .btn-text {
+            transform: translateY(0);
+        }
+
+        .btn-icon {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        .btn-icon svg {
+            width: 22px;
+            height: 22px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .btn-project:hover .btn-text {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        .btn-project:hover .btn-icon {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+
+        /* Intereses */
+        .interests-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #16181c;
+            color: #ffffff;
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .tag:hover {
+            background: #1e2024;
+            border-color: #b4b4b4;
+            color: #ffffff;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .profile-cover {
+                height: 150px;
+            }
+
+            .profile-avatar img {
+                width: 100px;
+                height: 100px;
+                margin-left: 1.1rem;
+                margin-top: 1.1rem;
+            }
+
+            .btn-more {
+                display: none;
+            }
+
+            .profile-header {
+                margin-top: 0;
+                padding: 0 0.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-details {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .profile-info {
+                padding: 1rem 1rem 0;
+                margin-left: 1rem;
+            }
+
+            .profile-stats {
+                gap: 1rem;
+            }
+
+            .projects-section,
+            .interests-section {
+                padding: 1rem;
+            }
+
+            .profile-actions {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                margin-right: 2.5rem;
+            }
+
+        }
+
+        /* Alerta superior fija */
+        .fake-alert {
+            width: 100%;
+            background-color: #565656;
+            color: #ffffff;
+            text-align: center;
+            padding: 0.5rem 0;
+            font-weight: 600;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            user-select: none;
+        }
+
+        body {
+            padding-top: 2rem;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Alerta superior -->
+    <div class="fake-alert">
+        ⚠ Atención: Este pefil no es real
+    </div>
+
+
+    <div class="profile-container">
+        <!-- Header de navegación -->
+        <nav class="profile-nav">
+            <div class="profile-nav-title">
+                <h1>LeoBringasAtLife</h1>
+                <p>2 Publicaciones</p>
+            </div>
+        </nav>
+
+        <!-- Portada y foto de perfil -->
+        <!-- <div class="profile-cover">
+            <img src="https://images.unsplash.com/photo-1614850715649-1d0106293bd1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+                alt="Portada de LeooBringasAtLife">
+        </div> -->
+
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <img src="yo.png" alt="Foto de perfil de LeooBringasAtLife">
+            </div>
+
+            <div class="profile-actions">
+                <button class="btn-more">
+                    <span class="material-symbols-outlined">more_horiz</span>
+                </button>
+                <button class="btn-follow" id="followButton">Seguir</button>
+            </div>
+        </div>
+
+        <!-- Información principal -->
+        <div class="profile-info">
+            <h1>LeoBringasAtLife</h1>
+            <p class="username">@LeoBringasAtLife</p>
+
+            <p class="bio">
+                Twitter Mega Archí Oficial
+            </p>
+
+            <div class="profile-details">
+                <div class="detail">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                    <span>Se unió en Enero 2020</span>
+                </div>
+                <div class="detail">
+                    <span class="material-symbols-outlined">location_on</span>
+                    <span>Argentina</span>
+                </div>
+                <div class="detail">
+                    <span class="material-symbols-outlined">link</span>
+                    <a href="https://leobringasatlife.github.io/portfolio-v2/" target="_blank"
+                        rel="noopener noreferrer">Portfolio.io</a>
+                </div>
+            </div>
+
+            <div class="profile-stats">
+                <a href="#" class="stat">
+                    <strong>70</strong>
+                    <span>Siguiendo</span>
+                </a>
+                <a href="#" class="stat">
+                    <strong>69 M</strong>
+                    <span>Seguidores</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Pestañas de navegación -->
+        <nav class="profile-tabs">
+            <a href="#" class="active">Publicaciones</a>
+            <a href="#">Respuestas</a>
+            <a href="#">Multimedia</a>
+            <a href="#">Me gustas</a>
+        </nav>
+
+        <!-- Galería de proyectos -->
+        <section class="projects-section">
+            <h2>
+                <span class="material-symbols-outlined">code_blocks</span>
+                Proyectos
+            </h2>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>Excel Clon</h3>
+                        <p>Clon de Excel, con celdas editables, toolbar y manejo básico de
+                            tabla.</p>
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+
+                        <!-- Botones -->
+                        <div class="project-links">
+                            <!-- Botón GitHub -->
+                            <a href="https://github.com/LeoBringasAtLife/excel-clone" target="_blank"
+                                class="btn-project">
+                                <span class="btn-text">GitHub</span>
+                                <span class="btn-icon">
+                                    <!-- SVG de GitHub -->
+                                    <svg data-testid="geist-icon" height="16" stroke-linejoin="round"
+                                        viewBox="0 0 16 16" width="16" style="color: currentcolor;">
+                                        <g clip-path="url(#clip0_872_3147)">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M8 0C3.58 0 0 3.57879 0 7.99729C0 11.5361 2.29 14.5251 5.47 15.5847C5.87 15.6547 6.02 15.4148 6.02 15.2049C6.02 15.0149 6.01 14.3851 6.01 13.7154C4 14.0852 3.48 13.2255 3.32 12.7757C3.23 12.5458 2.84 11.836 2.5 11.6461C2.22 11.4961 1.82 11.1262 2.49 11.1162C3.12 11.1062 3.57 11.696 3.72 11.936C4.44 13.1455 5.59 12.8057 6.05 12.5957C6.12 12.0759 6.33 11.726 6.56 11.5261C4.78 11.3262 2.92 10.6364 2.92 7.57743C2.92 6.70773 3.23 5.98797 3.74 5.42816C3.66 5.22823 3.38 4.40851 3.82 3.30888C3.82 3.30888 4.49 3.09895 6.02 4.1286C6.66 3.94866 7.34 3.85869 8.02 3.85869C8.7 3.85869 9.38 3.94866 10.02 4.1286C11.55 3.08895 12.22 3.30888 12.22 3.30888C12.66 4.40851 12.38 5.22823 12.3 5.42816C12.81 5.98797 13.12 6.69773 13.12 7.57743C13.12 10.6464 11.25 11.3262 9.47 11.5261C9.76 11.776 10.01 12.2558 10.01 13.0056C10.01 14.0752 10 14.9349 10 15.2049C10 15.4148 10.15 15.6647 10.55 15.5847C12.1381 15.0488 13.5182 14.0284 14.4958 12.6673C15.4735 11.3062 15.9996 9.67293 16 7.99729C16 3.57879 12.42 0 8 0Z"
+                                                fill="currentColor"></path>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_872_3147">
+                                                <rect width="16" height="16" fill="white"></rect>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </span>
+                            </a>
+                            <a href="https://github.com/LeoBringasAtLife" target="_blank" class="btn-project">
+                                <span class="btn-text">Abrir</span>
+                                <span class="btn-icon">Abrir</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>Portfolio Web</h3>
+                        <p>
+                            Sitio web personal para mostrar proyectos
+                            y habilidades.
+                        </p>
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/LeoBringasAtLife/portfolio-v2" target="_blank"
+                                class="btn-project">
+                                <span class="btn-text">GitHub</span>
+                                <span class="btn-icon">
+                                    <!-- SVG de GitHub -->
+                                    <svg data-testid="geist-icon" height="16" stroke-linejoin="round"
+                                        viewBox="0 0 16 16" width="16" style="color: currentcolor;">
+                                        <g clip-path="url(#clip0_872_3147)">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M8 0C3.58 0 0 3.57879 0 7.99729C0 11.5361 2.29 14.5251 5.47 15.5847C5.87 15.6547 6.02 15.4148 6.02 15.2049C6.02 15.0149 6.01 14.3851 6.01 13.7154C4 14.0852 3.48 13.2255 3.32 12.7757C3.23 12.5458 2.84 11.836 2.5 11.6461C2.22 11.4961 1.82 11.1262 2.49 11.1162C3.12 11.1062 3.57 11.696 3.72 11.936C4.44 13.1455 5.59 12.8057 6.05 12.5957C6.12 12.0759 6.33 11.726 6.56 11.5261C4.78 11.3262 2.92 10.6364 2.92 7.57743C2.92 6.70773 3.23 5.98797 3.74 5.42816C3.66 5.22823 3.38 4.40851 3.82 3.30888C3.82 3.30888 4.49 3.09895 6.02 4.1286C6.66 3.94866 7.34 3.85869 8.02 3.85869C8.7 3.85869 9.38 3.94866 10.02 4.1286C11.55 3.08895 12.22 3.30888 12.22 3.30888C12.66 4.40851 12.38 5.22823 12.3 5.42816C12.81 5.98797 13.12 6.69773 13.12 7.57743C13.12 10.6464 11.25 11.3262 9.47 11.5261C9.76 11.776 10.01 12.2558 10.01 13.0056C10.01 14.0752 10 14.9349 10 15.2049C10 15.4148 10.15 15.6647 10.55 15.5847C12.1381 15.0488 13.5182 14.0284 14.4958 12.6673C15.4735 11.3062 15.9996 9.67293 16 7.99729C16 3.57879 12.42 0 8 0Z"
+                                                fill="currentColor"></path>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_872_3147">
+                                                <rect width="16" height="16" fill="white"></rect>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </span>
+                            </a>
+                            <a href="https://leobringasatlife.github.io/portfolio-v2/" target="_blank"
+                                class="btn-project">
+                                <span class="btn-text">Abrir</span>
+                                <span class="btn-icon">Abrir</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const followButton = document.getElementById('followButton');
+
+            followButton.addEventListener('click', function () {
+                if (followButton.textContent === 'Seguir') {
+                    followButton.textContent = 'Siguiendo';
+                    followButton.classList.add('following');
+                    // Animación de confirmación
+                    setTimeout(() => {
+                        followButton.innerHTML = 'Siguiendo';
+                    }, 200);
+                } else {
+                    followButton.textContent = 'Seguir';
+                    followButton.classList.remove('following');
+                    followButton.innerHTML = 'Seguir';
+                }
+            });
+
+            // Efecto hover para los proyectos
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.querySelector('img').style.transform = 'scale(1.03)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.querySelector('img').style.transform = 'scale(1)';
+                });
+            });
+
+            // Interactividad para las pestañas
+            const tabs = document.querySelectorAll('.profile-tabs a');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
