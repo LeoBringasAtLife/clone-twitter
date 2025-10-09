@@ -5,20 +5,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Perfil de Leo Bringas - Desarrollador Web">
-    <title>LeoBringasAtLife – Proyectos Web</title>
+    <title>Leonardo Bringas (@LeoBringasAtLife) / X</title>
+    <link rel="shortcut icon" href="images/x.png" type="image/x-png">
     <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="javascript/main.js"></script>
 </head>
 
 <body>
 
     <div class="profile-container">
-        <!-- Header de navegación -->
-        <nav class="profile-nav">
-            <div class="profile-nav-title">
-                <h1>LeoBringasAtLife</h1>
-                <p>2 Publicaciones</p>
-            </div>
-        </nav>
 
         <div class="profile-header">
             <div class="profile-avatar">
@@ -35,17 +30,18 @@
 
         <!-- Información principal -->
         <div class="profile-info">
-            <h1>LeoBringasAtLife</h1>
+            <h1>Leonardo Bringas</h1>
             <p class="username">@LeoBringasAtLife</p>
 
             <p class="bio">
-                Twitter Mega Archí Oficial
+                Desarrollador Web | Apasionado por la tecnologías y la programación. Me encanta crear soluciones
+                innovadoras y compartir mis conocimientos con la comunidad.
             </p>
 
             <div class="profile-details">
                 <div class="detail">
                     <span class="material-symbols-outlined">calendar_month</span>
-                    <span>Se unió en Enero 2020</span>
+                    <span>Se unió el septiembre de 2025</span>
                 </div>
                 <div class="detail">
                     <span class="material-symbols-outlined">location_on</span>
@@ -54,7 +50,7 @@
                 <div class="detail">
                     <span class="material-symbols-outlined">link</span>
                     <a href="https://leobringasatlife.github.io/portfolio-v2/" target="_blank"
-                        rel="noopener noreferrer">Portfolio.io</a>
+                        rel="noopener noreferrer">leobringasatlife.github.io/portfolio.v2</a>
                 </div>
             </div>
 
@@ -72,14 +68,14 @@
 
         <!-- Pestañas de navegación -->
         <nav class="profile-tabs">
-            <a href="#" class="active">Publicaciones</a>
-            <a href="#">Respuestas</a>
-            <a href="#">Multimedia</a>
-            <a href="#">Me gustas</a>
+            <a href="#publicaciones" class="tab-content">Publicaciones</a>
+            <a href="#respuestas" class="active">Respuestas</a>
+            <a href="#multimedia">Multimedia</a>
+            <a href="#me-gustas">Me gustas</a>
         </nav>
 
-        <!-- Galería de proyectos -->
-        <section class="projects-section">
+        <!-- Sección de Proyectos -->
+        <section class="projects-section" id="publicaciones">
             <h2>
                 <span class="material-symbols-outlined">code_blocks</span>
                 Proyectos
@@ -102,7 +98,7 @@
                         <div class="project-links">
                             <!-- Botón GitHub -->
                             <a href="https://github.com/LeoBringasAtLife/excel-clone" target="_blank"
-                                class="btn-project">
+                                class="btn-project" noreferrer rel="noopener">
                                 <span class="btn-text">GitHub</span>
                                 <span class="btn-icon">
                                     <!-- SVG de GitHub -->
@@ -121,8 +117,8 @@
                                     </svg>
                                 </span>
                             </a>
-                            <a href="https://github.com/LeoBringasAtLife/excel-clone" target="_blank"
-                                class="btn-project">
+                            <a href="https://leobringasatlife.github.io/excel-clone/" noreferrer rel="noopener"
+                                target="_blank" class="btn-project">
                                 <span class="btn-text">Abrir</span>
                                 <span class="btn-icon">Abrir</span>
                             </a>
@@ -143,8 +139,8 @@
                             <span>JavaScript</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/LeoBringasAtLife/portfolio-v2" target="_blank"
-                                class="btn-project">
+                            <a href="https://github.com/LeoBringasAtLife/portfolio-v2" noreferrer rel="noopener"
+                                target="_blank" class="btn-project">
                                 <span class="btn-text">GitHub</span>
                                 <span class="btn-icon">
                                     <!-- SVG de GitHub -->
@@ -171,20 +167,20 @@
                         </div>
                     </div>
                 </div>
-                <!-- Twitter Clone -->
+                <!-- Google Translates -->
                 <div class="project-card">
                     <div class="project-info">
-                        <h3>Twitter Clon</h3>
+                        <h3>Google Translate</h3>
                         <p>
-                            Clon funcional de Twitter.
+                            Replica de "Google Translate".
                         </p>
                         <div class="project-tags">
+                            <span>JavaScript</span>
                             <span>HTML</span>
                             <span>CSS</span>
-                            <span>JavaScript</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/LeoBringasAtLife/clone-twitter" target="_blank"
+                            <a href="https://github.com/LeoBringasAtLife/google-translate" target="_blank"
                                 class="btn-project">
                                 <span class="btn-text">GitHub</span>
                                 <span class="btn-icon">
@@ -204,7 +200,7 @@
                                     </svg>
                                 </span>
                             </a>
-                            <a href="https://github.com/LeoBringasAtLife/clone-twitter" target="_blank"
+                            <a href="https://leobringasatlife.github.io/google-translate/" target="_blank"
                                 class="btn-project">
                                 <span class="btn-text">Abrir</span>
                                 <span class="btn-icon">Abrir</span>
@@ -216,63 +212,20 @@
             </div>
         </section>
 
-        <!-- https://github.com/LeoBringasAtLife/clone-twitter -->
+        <section id="respuestas" class="tab-content">
+            <h2>Respuestas</h2>
+        </section>
+
+        <section id="multimedia" class="tab-content">
+            <h2>Multimedia</h2>
+        </section>
+
+        <section id="me-gustas" class="tab-content">
+            <h2>Me gustas</h2>
+        </section>
 
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Botón Seguir / Siguiendo
-            const followButton = document.getElementById('followButton');
-            followButton.addEventListener('click', function () {
-                if (followButton.textContent === 'Seguir') {
-                    followButton.textContent = 'Siguiendo';
-                    followButton.classList.add('following');
-                    setTimeout(() => {
-                        followButton.innerHTML = 'Siguiendo';
-                    }, 200);
-                } else {
-                    followButton.textContent = 'Seguir';
-                    followButton.classList.remove('following');
-                    followButton.innerHTML = 'Seguir';
-                }
-            });
 
-            // Efecto hover para los proyectos
-            const projectCards = document.querySelectorAll('.project-card');
-            projectCards.forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.querySelector('img').style.transform = 'scale(1.03)';
-                });
-                card.addEventListener('mouseleave', () => {
-                    card.querySelector('img').style.transform = 'scale(1)';
-                });
-            });
-
-            // Interactividad para las pestañas
-            const tabs = document.querySelectorAll('.profile-tabs a');
-            const tabContents = document.querySelectorAll('.tab-content');
-
-            tabs.forEach((tab, index) => {
-                tab.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    // Cambiar clase activa en las pestañas
-                    tabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-
-                    // Mostrar contenido correspondiente y ocultar los demás
-                    tabContents.forEach((content, i) => {
-                        if (i === index) {
-                            content.classList.add('active');
-                        } else {
-                            content.classList.remove('active');
-                        }
-                    });
-                });
-            });
-        });
-
-    </script>
 </body>
 
 </html>
